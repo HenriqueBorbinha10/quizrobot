@@ -1,15 +1,11 @@
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
  <meta charset="UTF-8" />
- <title>TIKTOK ROBOT</title>
+ <title>TIKTOK ROBOTk</title>
  <script src="https://cdn.tailwindcss.com"></script>
  <style>
    body { background-color: black; color: white; font-family: Arial, sans-serif; }
-
-
 
 
    :root {
@@ -18,13 +14,9 @@
      --logo-margin-bottom: 40px;
 
 
-
-
      /* --- TÍTULO DA E01 --- */
      --titulo-margin-top: 0px;
      --titulo-margin-bottom: 0px;
-
-
 
 
      /* --- INPUT 01  E01--- */
@@ -32,13 +24,9 @@
      --input1-margin-bottom: 20px;
 
 
-
-
      /* --- TIPOS DE VÍDEO  E01--- */
      --input2-margin-top: 20px;
      --input2-margin-bottom: 20px;
-
-
 
 
      /* --- QUANTIDADE DE VÍDEOS DA E01--- */
@@ -46,13 +34,9 @@
      --input3-margin-bottom: 0px;
 
 
-
-
      /* --- BOTÃO DE CONTINUAR DA E01 --- */
      --botao-margin-top: 20px;
      --botao-margin-bottom: 10px;
-
-
 
 
      /* --- INFORMAÇÕES DE PREENCHIMENTO DA E01 --- */
@@ -60,20 +44,14 @@
      --info-margin-bottom: 0px;
 
 
-
-
      /* --- TÍTULO DA ETAPA E02 --- */
      --titulo2-margin-top: 40px;
      --titulo2-margin-bottom: 40px;
 
 
-
-
      /* --- LOGO DA ETAPA E02 --- */
      --logo2-margin-top: 0px;
      --logo2-margin-bottom: 40px;
-
-
 
 
      /* --- SUBTÍTULOS DA ETAPA E02 --- */
@@ -90,13 +68,9 @@
      --barra-margin-bottom: 0px;
 
 
-
-
      /* --- PERCENTUAL DA E02 --- */
      --percentual-margin-top: 1px;
      --percentual-margin-bottom: 20px;
-
-
 
 
      /* --- TAREFAS DA ETAPA E02 --- */
@@ -106,8 +80,6 @@
      --tarefa2-margin-bottom: 10px;
      --tarefa3-margin-top: 10px;
      --tarefa3-margin-bottom: 10px;
-
-
 
 
       /* --- ETAPA 03 --- */
@@ -129,12 +101,6 @@
    .hidden { display: none; }
    .fade-in { opacity: 0; animation: fadeIn 2s ease-in-out forwards; }
    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-
-
-
-
-
 
 
    .progress-bar {
@@ -163,24 +129,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- ETAPA 01 -->
 <div id="etapa01" class="flex items-center justify-center min-h-screen">
  <div class="w-full max-w-md px-4 space-y-6">
@@ -196,14 +144,8 @@
 
 
 
-
-
-
-
    <!-- Título -->
    <h2 class="text-center text-xl font-semibold" style="margin-top: var(--titulo-margin-top); margin-bottom: var(--titulo-margin-bottom);">🎥 VIDEO PANEL</h2>
-
-
 
 
    <!-- Handle -->
@@ -213,10 +155,6 @@
      </div>
      <input id="handle" type="text" placeholder="@your_tiktok_handle" class="w-full bg-[#1f1f1f] p-3 rounded-md focus:outline-none hidden" />
    </div>
-
-
-
-
    <!-- Tipos -->
    <div class="bg-[#121212] rounded-xl p-4 space-y-4" style="margin-top: var(--input2-margin-top); margin-bottom: var(--input2-margin-bottom);">
      <div id="toggle-types" class="flex justify-between items-center cursor-pointer">
@@ -235,14 +173,6 @@
        <p id="video-count" class="text-gray-400 text-sm hidden">Selected: 0 types</p>
      </div>
    </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -278,21 +208,15 @@
 
 
 
-
-
-
-
-
-
    <!-- Botão Continuar -->
-   <button id="continue" disabled class="w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl transition-colors duration-300" style="margin-top: var(--botao-margin-top); margin-bottom: var(--botao-margin-bottom);">CONTINUAR</button>
+   <button id="continue" disabled class="w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl transition-colors duration-300" style="margin-top: var(--botao-margin-top); margin-bottom: var(--botao-margin-bottom);">CONTINUE</button>
 
 
 
 
    <!-- Instruções -->
    <p id="info" class="text-center text-sm text-gray-400" style="margin-top: var(--info-margin-top); margin-bottom: var(--info-margin-bottom);">
-     Por favor, preencha seu perfil no TikTok, selecione pelo menos um tipo de vídeo e escolha vídeos por dia para continuar.
+     Please fill out your TikTok profile, select at least one video type, and choose videos per day to continue.
    </p>
  </div>
 </div>
@@ -322,112 +246,34 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- ETAPA 02 -->
 <div id="etapa02" class="hidden min-h-screen flex items-center justify-center text-center px-6">
  <div>
-   <h2 class="text-xl font-semibold" style="margin-top: var(--titulo2-margin-top); margin-bottom: var(--titulo2-margin-bottom);">🌀 Enviando vídeos...</h2>
+   <h2 class="text-xl font-semibold" style="margin-top: var(--titulo2-margin-top); margin-bottom: var(--titulo2-margin-bottom);">🌀 Sending videos...</h2>
    <img src="imagens/tiktok_logo.png" alt="TikTok Logo" width="100"
     style="display: block; margin: var(--logo2-margin-top) auto var(--logo2-margin-bottom) auto;" />
-   <p id="phrase-wait">⏳ Aguarde, gerando vídeos...</p>
+   <p id="phrase-wait">⏳ Wait, generating videos...</p>
    <div class="progress-bar" style="width: 100%; margin-top: var(--barra-margin-top); margin-bottom: var(--barra-margin-bottom);">
      <div id="progress" class="progress" style="width: 60%;"></div>
    </div>
    <div style="width: 100%; display: flex; justify-content: space-between; margin-top: 8px;">
-     <span id="processando">Processando...</span>
+     <span id="processando">Processing...</span>
      <span id="percentage">60%</span>
    </div>
-   <p id="phrase1" class="sub-text hidden" style="font-size: 12px; margin-top: var(--tarefa1-margin-top); margin-bottom: var(--tarefa1-margin-bottom);">📊 Analisando suas preferências de conteúdo...</p>
-   <p id="phrase2" class="sub-text hidden" style="font-size: 12px; margin-top: var(--tarefa2-margin-top); margin-bottom: var(--tarefa2-margin-bottom);">🤖 Gerando ideias criativas...</p>
-   <p id="phrase3" class="sub-text hidden" style="font-size: 12px; margin-top: var(--tarefa3-margin-top); margin-bottom: var(--tarefa3-margin-bottom);">✨ Finalizando seus conceitos de vídeo...</p>
+   <p id="phrase1" class="sub-text hidden" style="font-size: 12px; margin-top: var(--tarefa1-margin-top); margin-bottom: var(--tarefa1-margin-bottom);">📊 Analyzing your content preferences...</p>
+   <p id="phrase2" class="sub-text hidden" style="font-size: 12px; margin-top: var(--tarefa2-margin-top); margin-bottom: var(--tarefa2-margin-bottom);">🤖 Generating creative ideas...</p>
+   <p id="phrase3" class="sub-text hidden" style="font-size: 12px; margin-top: var(--tarefa3-margin-top); margin-bottom: var(--tarefa3-margin-bottom);">✨ Finalizing video concepts...</p>
  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- ETAPA 03 -->
 <div id="etapa03" class="hidden min-h-screen flex flex-col items-center justify-center px-6 bg-black text-white">
- <h1 class="text-3xl font-bold" style="margin-top: var(--titulo3-margin-top); margin-bottom: var(--titulo3-margin-bottom);">VÍDEOS GERADOS</h1>
- <p id="subtitle" class="text-gray-400 text-sm" style="margin-top: var(--subtitulo3-margin-top); margin-bottom: var(--subtitulo3-margin-bottom);">PROCESSADO</p>
+ <h1 class="text-3xl font-bold" style="margin-top: var(--titulo3-margin-top); margin-bottom: var(--titulo3-margin-bottom);">GENERATED VIDEOS</h1>
+ <p id="subtitle" class="text-gray-400 text-sm" style="margin-top: var(--subtitulo3-margin-top); margin-bottom: var(--subtitulo3-margin-bottom);">PROCESSED</p>
 
 
-
-
- <div id="videos-container" class="space-y-6 w-full max-w-3xl" style="margin-bottom: var(--videos-margin-bottom);">
+ <div id="videos-container" class="space-y-6 w-full max-w-3x1" style="margin-bottom: var(--videos-margin-bottom);">
    <!-- Vídeos serão carregados aqui dinamicamente -->
  </div>
-
-
 
 
  <div class="flex flex-wrap justify-center gap-[var(--button-spacing-etapa03)]">
@@ -435,26 +281,16 @@
      onclick="voltarParaEtapa01()"
      class="bg-cyan-400 hover:bg-cyan-500 text-black font-bold py-3 px-8 rounded-lg transition-colors duration-300"
    >
-     VOLTAR
+     BACK
    </button>
    <button
      onclick="window.open('https://www.google.com', '_blank')"
      class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300"
    >
-     PUBLICAR VÍDEOS
+     PUBLISH VIDEOS
    </button>
  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 <script>
@@ -473,12 +309,6 @@
  let selectedCount = null;
 
 
-
-
-
-
-
-
  toggleHandle.addEventListener("click", () => handleInput.classList.toggle("hidden"));
  toggleTypes.addEventListener("click", () => {
    typesWrapper.classList.toggle("hidden");
@@ -488,10 +318,6 @@
    countWrapper.classList.toggle("hidden");
    countResult.classList.toggle("hidden");
  });
-
-
-
-
 
 
 
@@ -514,12 +340,6 @@
  });
 
 
-
-
-
-
-
-
  document.getElementById("count-options").addEventListener("click", event => {
    const btn = event.target.closest(".video-count");
    if (!btn) return;
@@ -533,15 +353,7 @@
 
 
 
-
-
-
-
  handleInput.addEventListener("input", validate);
-
-
-
-
 
 
 
@@ -558,10 +370,6 @@
 
 
 
-
-
-
-
  continueBtn.addEventListener("click", () => {
    localStorage.setItem("tiktokHandle", handleInput.value.trim());
    localStorage.setItem("videoTypes", JSON.stringify([...selectedTypes]));
@@ -572,20 +380,12 @@
 
 
 
-
-
-
-
  function mostrarEtapa02() {
    document.getElementById("etapa01").classList.add("hidden");
    document.getElementById("etapa02").classList.remove("hidden");
    let width = 0;
    const progress = document.getElementById("progress");
    const percent = document.getElementById("percentage");
-
-
-
-
 
 
 
@@ -602,24 +402,10 @@
    }, 100);
 
 
-
-
-
-
-
-
    setTimeout(() => mostrarFrase("phrase1"), 1000);
    setTimeout(() => mostrarFrase("phrase2"), 4000);
    setTimeout(() => mostrarFrase("phrase3"), 7000);
  }
-
-
-
-
-
-
-
-
  function mostrarFrase(id) {
    const el = document.getElementById(id);
    el.classList.remove("hidden");
@@ -627,23 +413,11 @@
  }
 
 
-
-
-
-
-
-
  function mostrarEtapa03() {
    document.getElementById("etapa02").classList.add("hidden");
    document.getElementById("etapa03").classList.remove("hidden");
    carregarVideos();
  }
-
-
-
-
-
-
 
 
  function carregarVideos() {
@@ -663,10 +437,6 @@
      container.appendChild(videoDiv);
    }
  }
-
-
-
-
 
 
 
