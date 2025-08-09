@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>TIKTOK ROBOT – Vídeos Gerados</title>
+  <title>TIKTOK ROBOT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -90,20 +90,20 @@
 <!-- ETAPA 02 -->
 <div id="etapa02" class="hidden min-h-screen flex flex-col items-center justify-center px-2 sm:px-6">
   <div class="w-full max-w-md sm:max-w-lg py-8 mx-auto text-center">
-    <h2 class="text-2xl font-semibold mb-5">🌀 Enviando vídeos...</h2>
+    <h2 class="text-2xl font-semibold mb-5">🌀 Sending videos...</h2>
     <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok Logo" width="80"
       class="mx-auto mb-4" />
-    <p id="phrase-wait" class="mb-3">⏳ Espere, gerando vídeos...</p>
+    <p id="phrase-wait" class="mb-3">⏳ Wait, generating videos...</p>
     <div class="progress-bar mb-2">
       <div id="progress" class="progress" style="width: 60%;"></div>
     </div>
     <div class="w-full flex justify-between mt-2 text-xs sm:text-base mb-2">
-      <span id="processando">Processando...</span>
+      <span id="processando">Processing...</span>
       <span id="percentage">60%</span>
     </div>
-    <p id="phrase1" class="sub-text hidden text-xs mb-2">📊 Analisando suas preferências de conteúdo...</p>
-    <p id="phrase2" class="sub-text hidden text-xs mb-2">🤖 Gerando ideias criativas...</p>
-    <p id="phrase3" class="sub-text hidden text-xs mb-2">✨ Finalizando conceitos dos vídeos...</p>
+    <p id="phrase1" class="sub-text hidden text-xs mb-2">📊 Analyzing your content preferences...</p>
+    <p id="phrase2" class="sub-text hidden text-xs mb-2">🤖 Generating creative ideas...</p>
+    <p id="phrase3" class="sub-text hidden text-xs mb-2">✨ Finalizing video concepts...</p>
   </div>
 </div>
 
@@ -111,10 +111,10 @@
 <div id="etapa03" class="hidden min-h-screen flex flex-col items-center justify-start py-10 px-2 bg-black text-white">
   <main class="w-full max-w-2xl mx-auto flex flex-col items-center">
     <!-- Título -->
-    <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">VÍDEOS GERADOS</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-center">VÍDEOS GENERADOS</h1>
     <!-- Subtítulo -->
     <p id="subtitle" class="text-gray-300 text-base sm:text-lg mb-6 text-center">
-      Com base nos tipos de vídeo selecionados: <span id="selectedTypeText" class="font-semibold">Curiosidades</span>
+      Based on selected video types: <span id="selectedTypeText" class="font-semibold">Curiosities</span>
     </p>
     <div id="videos-container" class="w-full flex flex-col gap-4 mb-8"></div>
 
@@ -125,15 +125,15 @@
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A9 9 0 106.62 6.623"/>
         </svg>
-        Gere mais vídeos
+        Generate more videos
       </button>
       <button class="flex-1 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-md transition duration-200"
         onclick="alert('Publicar vídeos!')">
-        Publicar vídeos
+        Publish videos
       </button>
       <button class="flex-1 bg-[#222] hover:bg-[#333] text-white font-semibold py-3 px-6 rounded-md transition duration-200"
         onclick="voltarParaEtapa01()">
-        Voltar para a configuração
+        Back to configuration
       </button>
     </div>
   </main>
