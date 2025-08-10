@@ -322,13 +322,13 @@
       typeArray = JSON.parse(localStorage.getItem("videoTypes")) || ["Curiosities"];
     } catch { typeArray = ["Curiosities"]; }
     document.getElementById('selectedTypeText').textContent = typeArray.length > 0 ? typeArray.join(", ") : "Curiosities";
-    // Layout: Caixa rosa menor ao redor do título, "✅PROCESSED" embaixo
+    // Layout: Caixa rosa menor ao redor do título, "✅ PROCESSED" embaixo
     for (let i = 1; i <= videosPerDay; i++) {
       const videoDiv = document.createElement("div");
       videoDiv.className = "bg-[#18181b] rounded-xl px-5 py-4 video-box flex flex-col justify-start items-start shadow relative";
       videoDiv.innerHTML = `
         <span class="video-label-pink">Vídeo ${i}</span>
-        <span class="processed-label mt-2">✅PROCESSED</span>
+        <span class="processed-label mt-2">✅ PROCESSED</span>
       `;
       container.appendChild(videoDiv);
     }
