@@ -48,7 +48,6 @@
     }
     .video-box { min-height: 56px; }
     .processed-label { color: #34d399; font-weight: 600; font-size: 0.87rem; margin-left: 2px; }
-    /* Caixa rosa menor e centralizada abaixo do título */
     .processed-bar-small {
       background: #f43f5e;
       color: #fff;
@@ -64,7 +63,6 @@
       max-width: 180px;
       text-align: center;
     }
-    /* Reduzir texto do Comment Replies se necessário */
     .video-type.comment-replies {
       font-size: 0.85rem !important;
       padding-left: 0.3rem !important;
@@ -107,7 +105,6 @@
           <button class="video-type option-btn bg-[#1a1a1a]">Comedy</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Curiosities</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Reactions</button>
-          <!-- Comment Replies na coluna 1, reduzido -->
           <button class="video-type option-btn comment-replies bg-[#1a1a1a]" style="grid-column: span 1 / span 1;">Comment Replies</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Reviews</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Trends</button>
@@ -139,7 +136,7 @@
     </div>
     <div style="margin-bottom: 17px;"></div>
     <div style="margin-top: 10px;"></div>
-    <button id="continue" disabled class="w-full py-3 bg-pink-custom text-white font-bold rounded-xl">CONTINUE</button>
+    <button id="continue" disabled class="w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl">CONTINUE</button>
     <div style="margin-bottom: 18px;"></div>
     <div style="margin-top: 0px;"></div>
     <p id="info" class="text-center text-sm text-gray-400">
@@ -322,7 +319,6 @@
       typeArray = JSON.parse(localStorage.getItem("videoTypes")) || ["Curiosities"];
     } catch { typeArray = ["Curiosities"]; }
     document.getElementById('selectedTypeText').textContent = typeArray.length > 0 ? typeArray.join(", ") : "Curiosities";
-    // Layout: Caixa rosa menor ao redor do título, "✅ PROCESSED" embaixo
     for (let i = 1; i <= videosPerDay; i++) {
       const videoDiv = document.createElement("div");
       videoDiv.className = "bg-[#18181b] rounded-xl px-5 py-4 video-box flex flex-col justify-start items-start shadow relative";
