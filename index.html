@@ -425,21 +425,40 @@
     startBalance01();
   }
 
-  // Função para gerar mais vídeos (voltar ao início)
+  // Função para gerar mais vídeos (voltar ao início totalmente limpo)
   function generateMoreVideos() {
+    // Limpa os dados salvos
     localStorage.removeItem("videoTypes");
     localStorage.removeItem("videosPerDay");
     localStorage.removeItem("tiktokHandle");
+
+    // Volta para etapa 1
     document.getElementById("etapa03").classList.add("hidden");
     document.getElementById("etapa01").classList.remove("hidden");
     startBalance01();
+
+    // Limpa seleção dos botões
     document.querySelectorAll(".video-type").forEach(btn => btn.classList.remove("selected"));
     document.querySelectorAll(".video-count").forEach(btn => btn.classList.remove("selected"));
-    document.getElementById("handle").value = "";
+
+    // Limpa o input do handle e recolhe o campo
+    const handleInput = document.getElementById("handle");
+    handleInput.value = "";
+    handleInput.classList.add("hidden");
+
+    // Recolhe os campos de tipos e quantidade
+    document.getElementById("types-wrapper").classList.add("hidden");
+    document.getElementById("video-count").classList.add("hidden");
+    document.getElementById("count-wrapper").classList.add("hidden");
+    document.getElementById("count-result").classList.add("hidden");
+
+    // Zera contadores
     selectedTypes = new Set();
     selectedCount = null;
     document.getElementById("video-count").textContent = "Selected: 0";
     document.getElementById("count-result").textContent = "Selected: 0";
+
+    // Desabilita botão e mostra info
     validate();
   }
 </script>
