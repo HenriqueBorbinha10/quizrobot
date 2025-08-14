@@ -7,15 +7,20 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: #000; color: #fff; font-family: Arial, sans-serif; }
-    /* STICKY HEADER */
-    .sticky-header {
-      position: sticky;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      z-index: 50;
-      background: #1f1f1f;
-      box-shadow: 0 2px 8px 0 #0004;
+    .bg-pink-custom { background: #f43f5e; }
+    .option-btn {
+      padding: 0.32rem 0.5rem !important;
+      font-size: 0.91rem !important;
+      min-width: 0;
+      border-radius: 0.5rem !important;
+    }
+    .option-btn.selected {
+      background: #f43f5e !important;
+      color: #fff !important;
+    }
+    .count-btn.selected {
+      background: #2bfcf8 !important;
+      color: #18181b !important;
     }
     .caixa-saldo {
       width: 100%;
@@ -23,58 +28,87 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      background: #1f1f1f;
+      background: #232326;
       border-radius: 0.75rem;
-      padding: 0.74rem 1.15rem;
+      padding: 0.75rem 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
       box-sizing: border-box;
       max-width: 100vw;
-      gap: 0.75rem;
-    }
-    .caixa-saldo-text {
-      font-size: 0.97rem;
-      font-weight: 500;
-      color: #fff;
-      flex: 1 1 0;
-      word-break: break-word;
-      white-space: normal;
-      line-height: 1.2;
-      display: flex;
-      align-items: center;
-      text-align: justify;
-      min-height: 40px;
-    }
-    .balance-box-small {
-      background: #f43f5e;
-      color: #fff;
-      border-radius: 0.55rem;
-      font-size: 1.05rem;
-      font-weight: 700;
-      padding: 0.32rem 1.5rem;
-      min-width: 125px;
-      max-width: 180px;
-      text-align: center;
-      letter-spacing: 0.5px;
-      box-shadow: 0 2px 8px 0 #f43f5e22;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     @media (max-width: 540px) {
       .caixa-saldo {
         flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-        padding: 0.74rem 0.5rem;
+        align-items: flex-start;
+        padding: 0.75rem 0.5rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
       }
       .balance-box-small {
         margin-left: 0;
         margin-top: 0.5rem;
         width: 100%;
-        align-self: flex-start;
       }
-      .sticky-header {
-        border-radius: 0 0 1.15rem 1.15rem;
-      }
+    }
+    .balance-box-small {
+      background: #f43f5e;
+      color: #fff;
+      border-radius: 0.4rem;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.18rem 0.7rem;
+      min-width: 85px;
+      text-align: center;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px 0 #f43f5e22;
+      transition: background 0.2s, color 0.2s;
+    }
+    .video-label-pink {
+      background: #f43f5e;
+      color: #fff;
+      border-radius: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.25rem 0.25rem;
+      margin-left: 0;
+      margin-bottom: 0.55rem;
+      letter-spacing: 0.2px;
+      display: inline-block;
+      text-align: center;
+      min-width: 90px;
+      max-width: 95%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .video-box { min-height: 56px; }
+    .processed-label { color: #34d399; font-weight: 600; font-size: 0.87rem; margin-left: 2px; }
+    .processed-bar-small {
+      background: #f43f5e;
+      color: #fff;
+      border-radius: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.18rem 0.9rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0;
+      display: inline-block;
+      letter-spacing: 0.1px;
+      min-width: 78px;
+      max-width: 180px;
+      text-align: center;
+    }
+    .video-type.comment-replies {
+      font-size: 0.85rem !important;
+      padding-left: 0.3rem !important;
+      padding-right: 0.3rem !important;
+      letter-spacing: -0.5px;
+    }
+    .btn-bar { display: flex; flex-direction: row; gap: 0.5rem; width: 100%; justify-content: center; }
+    .btn-bar > button { flex: 1 1 0; font-size: 1rem; padding-left: 0.5rem; padding-right: 0.5rem; white-space: nowrap; }
+    @media (max-width: 540px) {
+      .btn-bar { flex-direction: column !important; gap: 0.5rem !important; }
+      .btn-bar > button { width: 100%; }
     }
   </style>
 </head>
@@ -84,13 +118,13 @@
 <div id="etapa01" class="flex items-center justify-center min-h-screen px-2 sm:px-6">
   <div class="w-full max-w-md sm:max-w-lg px-2 sm:px-4">
     <div class="caixa-saldo" id="caixaSaldo01">
-      <span class="caixa-saldo-text">
+      <span class="text-sm font-medium leading-tight">
         Caixa de saldo: espaçamento superior, espaçamento inferior
       </span>
       <span id="balance01" class="balance-box-small">BALANCE: U$ 10.75</span>
     </div>
-    <div class="flex justify-center" style="margin-top:24px; margin-bottom:18px;">
-      <img id="logoImg" src="imagens/logo.png" alt="Logo" class="w-42" />
+    <div class="flex justify-center">
+      <img src="imagens/logo.png" alt="Logo" class="w-42" />
     </div>
     <h2 class="text-center text-2xl font-semibold mt-4">🎥 VIDEO PANEL</h2>
     <div class="bg-[#121212] rounded-xl p-4 space-y-2 mt-4">
@@ -109,7 +143,7 @@
           <button class="video-type option-btn bg-[#1a1a1a]">Comedy</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Curiosities</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Reactions</button>
-          <button class="video-type option-btn comment-replies bg-[#1a1a1a]">Comment Replies</button>
+          <button class="video-type option-btn comment-replies bg-[#1a1a1a]" style="grid-column: span 1 / span 1;">Comment Replies</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Reviews</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Trends</button>
         </div>
@@ -145,15 +179,16 @@
 
 <!-- ETAPA 02 -->
 <div id="etapa02" class="hidden min-h-screen flex flex-col items-center justify-center px-2 sm:px-6">
-  <div class="w-full max-w-md sm:max-w-lg px-2 sm:px-4">
-    <div class="caixa-saldo" id="caixaSaldo02" style="margin-top:0;">
-      <span class="caixa-saldo-text">
+  <div class="w-full max-w-md sm:max-w-lg py-8 mx-auto text-center">
+    <div class="caixa-saldo" id="caixaSaldo02">
+      <span class="text-sm font-medium leading-tight">
         Caixa de saldo: espaçamento superior, espaçamento inferior
       </span>
       <span id="balance02" class="balance-box-small">BALANCE: U$ 27.88</span>
     </div>
-    <h2 id="etapa02Title" class="text-2xl font-semibold" style="margin-top:38px; margin-bottom:22px;">🌀 Sending videos...</h2>
-    <img src="imagens/tiktok_logo.png" alt="TikTok Logo" width="100" class="mx-auto mb-4" />
+    <h2 class="text-2xl font-semibold mb-5">🌀 Sending videos...</h2>
+    <img src="imagens/tiktok_logo.png" alt="TikTok Logo" width="100"
+      class="mx-auto mb-4" />
     <p id="phrase-wait" class="mb-3">⏳ Wait, generating videos...</p>
     <div class="progress-bar mb-2" style="width:100%;height:8px;background:#1a1a1a;border-radius:10px;overflow:hidden;">
       <div id="progress" class="progress" style="width:0%;height:100%;background:linear-gradient(90deg,#ff5e62,#00bfff);border-radius:10px;transition:width 0.5s ease-in-out;"></div>
@@ -170,14 +205,14 @@
 
 <!-- ETAPA 03 -->
 <div id="etapa03" class="hidden min-h-screen flex flex-col items-center justify-start py-10 px-2 bg-black text-white">
-  <main class="w-full max-w-2xl mx-auto flex flex-col items-center">
-    <div class="caixa-saldo" id="caixaSaldo03" style="margin-top:0;">
-      <span class="caixa-saldo-text">
+ <main class="w-full max-w-2xl mx-auto flex flex-col items-center">
+    <div class="caixa-saldo" id="caixaSaldo03">
+      <span class="text-sm font-medium leading-tight">
         Caixa de saldo: espaçamento superior, espaçamento inferior
       </span>
       <span id="balance03" class="balance-box-small">BALANCE: U$ 37.45</span>
     </div>
-    <h1 id="etapa03Title" class="text-3xl sm:text-4xl font-bold mb-0 text-center" style="margin-top:38px; margin-bottom:22px;">GENERATED VIDEOS</h1>
+    <h1 class="text-3xl sm:text-4xl font-bold mb-0 text-center">GENERATED VIDEOS</h1>
     <p id="subtitle" class="text-gray-300 text-base sm:text-lg mb-0 text-center mt-3">
       Based on selected video types: <span id="selectedTypeText" class="font-semibold">Curiosities</span>
     </p>
@@ -276,13 +311,13 @@
   let balance2 = 27.88;
   let balance3 = 37.45;
   let interval1, interval2, interval3;
-  let stepTime = 1500;
+  let stepTime = 10000;
 
   function startBalance01() {
     clearInterval(interval1);
     document.getElementById('balance01').textContent = `BALANCE: U$ ${balance1.toFixed(2)}`;
     interval1 = setInterval(() => {
-      balance1 *= 1.2;
+      balance1 *= 1.05;
       document.getElementById('balance01').textContent = `BALANCE: U$ ${balance1.toFixed(2)}`;
     }, stepTime);
   }
@@ -290,7 +325,7 @@
     clearInterval(interval2);
     document.getElementById('balance02').textContent = `BALANCE: U$ ${balance2.toFixed(2)}`;
     interval2 = setInterval(() => {
-      balance2 *= 1.2;
+      balance2 *= 1.05;
       document.getElementById('balance02').textContent = `BALANCE: U$ ${balance2.toFixed(2)}`;
     }, stepTime);
   }
@@ -298,11 +333,11 @@
     clearInterval(interval3);
     document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;
     interval3 = setInterval(() => {
-      balance3 *= 1.2;
+      balance3 *= 1.05;
       document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;
     }, stepTime);
   }
-
+  // Chama o saldo nas etapas corretas
   window.addEventListener("DOMContentLoaded", () => {
     startBalance01();
   });
@@ -330,10 +365,10 @@
         progress.style.width = width + "%";
         percent.textContent = width + "%";
       }
-    }, 30);
-    setTimeout(() => mostrarFrase("phrase1"), 1000);
-    setTimeout(() => mostrarFrase("phrase2"), 2000);
-    setTimeout(() => mostrarFrase("phrase3"), 3000);
+    }, 75);
+    setTimeout(() => mostrarFrase("phrase1"), 2000);
+    setTimeout(() => mostrarFrase("phrase2"), 4000);
+    setTimeout(() => mostrarFrase("phrase3"), 6000);
   }
   function mostrarFrase(id) {
     const el = document.getElementById(id);
@@ -375,6 +410,7 @@
     startBalance01();
   }
 
+  // Função para gerar mais vídeos (voltar ao início)
   function generateMoreVideos() {
     localStorage.removeItem("videoTypes");
     localStorage.removeItem("videosPerDay");
@@ -394,3 +430,4 @@
 </script>
 </body>
 </html>
+
