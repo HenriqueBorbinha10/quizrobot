@@ -30,38 +30,54 @@
       align-items: center;
       background: #232326;
       border-radius: 0.75rem;
-      padding: 0.75rem 1rem;
+      padding: 0.9rem 1.5rem;
       margin-top: 1.5rem;
       margin-bottom: 1.5rem;
       box-sizing: border-box;
       max-width: 100vw;
+      gap: 1.5rem;
     }
-    @media (max-width: 540px) {
-      .caixa-saldo {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.75rem 0.5rem;
-        margin-top: 0.75rem;
-        margin-bottom: 0.75rem;
-      }
-      .balance-box-small {
-        margin-left: 0;
-        margin-top: 0.5rem;
-        width: 100%;
-      }
+    .saldo-texto {
+      font-size: 0.75rem;
+      font-weight: 500;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      flex:1 1 0;
     }
     .balance-box-small {
       background: #f43f5e;
       color: #fff;
-      border-radius: 0.4rem;
-      font-size: 0.86rem;
-      font-weight: 600;
-      padding: 0.18rem 0.7rem;
-      min-width: 85px;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.45rem 0.5rem;
+      min-width: 100px;
       text-align: center;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       box-shadow: 0 2px 8px 0 #f43f5e22;
       transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 540px) {
+      .caixa-saldo {
+        padding: 0.75rem 0.5rem;
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+        gap: 0.6rem;
+      }
+      .saldo-texto {
+        font-size: 0.88rem;
+      }
+      .balance-box-small {
+        font-size: 1rem;
+        min-width: 140px;
+        padding: 0.32rem 1.4rem;
+      }
     }
     .video-label-pink {
       background: #f43f5e;
@@ -118,7 +134,7 @@
 <div id="etapa01" class="flex items-center justify-center min-h-screen px-2 sm:px-6">
   <div class="w-full max-w-md sm:max-w-lg px-2 sm:px-4">
     <div class="caixa-saldo" id="caixaSaldo01">
-      <span class="text-sm font-medium leading-tight">
+      <span class="saldo-texto">
         Caixa de saldo: espaçamento superior, espaçamento inferior
       </span>
       <span id="balance01" class="balance-box-small">BALANCE: U$ 10.75</span>
@@ -181,7 +197,7 @@
 <div id="etapa02" class="hidden min-h-screen flex flex-col items-center justify-center px-2 sm:px-6">
   <div class="w-full max-w-md sm:max-w-lg py-8 mx-auto text-center">
     <div class="caixa-saldo" id="caixaSaldo02">
-      <span class="text-sm font-medium leading-tight">
+      <span class="saldo-texto">
         Caixa de saldo: espaçamento superior, espaçamento inferior
       </span>
       <span id="balance02" class="balance-box-small">BALANCE: U$ 27.88</span>
@@ -207,7 +223,7 @@
 <div id="etapa03" class="hidden min-h-screen flex flex-col items-center justify-start py-10 px-2 bg-black text-white">
  <main class="w-full max-w-2xl mx-auto flex flex-col items-center">
     <div class="caixa-saldo" id="caixaSaldo03">
-      <span class="text-sm font-medium leading-tight">
+      <span class="saldo-texto">
         Caixa de saldo: espaçamento superior, espaçamento inferior
       </span>
       <span id="balance03" class="balance-box-small">BALANCE: U$ 37.45</span>
@@ -311,13 +327,13 @@
   let balance2 = 27.88;
   let balance3 = 37.45;
   let interval1, interval2, interval3;
-  let stepTime = 10000;
+  let stepTime = 3500;
 
   function startBalance01() {
     clearInterval(interval1);
     document.getElementById('balance01').textContent = `BALANCE: U$ ${balance1.toFixed(2)}`;
     interval1 = setInterval(() => {
-      balance1 *= 1.05;
+      balance1 *= 1.03;
       document.getElementById('balance01').textContent = `BALANCE: U$ ${balance1.toFixed(2)}`;
     }, stepTime);
   }
@@ -325,7 +341,7 @@
     clearInterval(interval2);
     document.getElementById('balance02').textContent = `BALANCE: U$ ${balance2.toFixed(2)}`;
     interval2 = setInterval(() => {
-      balance2 *= 1.05;
+      balance2 *= 1.03;
       document.getElementById('balance02').textContent = `BALANCE: U$ ${balance2.toFixed(2)}`;
     }, stepTime);
   }
@@ -333,7 +349,7 @@
     clearInterval(interval3);
     document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;
     interval3 = setInterval(() => {
-      balance3 *= 1.05;
+      balance3 *= 1.03;
       document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;
     }, stepTime);
   }
