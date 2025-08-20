@@ -144,14 +144,14 @@
          style="margin-top: 0.2px; margin-bottom: 0.2px;" />
     <h2 class="text-center text-2xl font-semibold mt-2 w-full">🎥 VIDEO PANEL</h2>
     <div class="bg-[#18181b] rounded-xl p-4 space-y-2 mt-4 w-full">
-      <div id="toggle-handle" class="flex justify-between items-center cursor-pointer">
-        <label class="font-bold text-lg">Enter your TikTok</label><span>﹀</span>
+      <div id="toggle-handle" class="flex justify-between items-center cursor-default">
+        <label class="font-bold text-lg">TikTok successfully set up </label>
       </div>
-      <input id="handle" type="text" placeholder="@your_tiktok_handle" class="w-full bg-[#1f1f1f] p-3 rounded-md focus:outline-none hidden" />
+      <!-- Removido o input do handle -->
     </div>
     <div class="bg-[#18181b] rounded-xl p-4 space-y-4 mt-4 w-full">
       <div id="toggle-types" class="flex justify-between items-center cursor-pointer">
-        <label class="font-bold text-lg">Select video type</label><span>﹀</span>
+        <label class="font-bold text-lg" id="types-label">3 types of videos selected</label><span>﹀</span>
       </div>
       <div id="types-wrapper" class="rounded-lg p-3 space-y-3 hidden">
         <div id="types-options" class="grid grid-cols-2 gap-2">
@@ -163,12 +163,12 @@
           <button class="video-type option-btn bg-[#1a1a1a]">Reviews</button>
           <button class="video-type option-btn bg-[#1a1a1a]">Trends</button>
         </div>
-        <p id="video-count" class="text-gray-400 text-sm hidden">Selected: 0</p>
+        <p id="video-count" class="text-gray-400 text-sm hidden">Selected: 3</p>
       </div>
     </div>
     <div class="bg-[#18181b] rounded-xl p-4 space-y-4 mt-4 w-full">
       <div id="toggle-count" class="flex justify-between items-center cursor-pointer">
-        <label class="font-bold text-lg">How many videos to post per day</label><span>﹀</span>
+        <label class="font-bold text-lg" id="count-label">3 videos per day</label><span>﹀</span>
       </div>
       <div id="count-wrapper" class="rounded-lg p-3 space-y-3 hidden">
         <div id="count-options" class="grid grid-cols-5 gap-2">
@@ -183,11 +183,11 @@
           <button class="video-count option-btn count-btn bg-[#1a1a1a]">9</button>
           <button class="video-count option-btn count-btn bg-[#1a1a1a]">10</button>
         </div>
-        <p id="count-result" class="text-gray-400 text-sm hidden">Selected: 0</p>
+        <p id="count-result" class="text-gray-400 text-sm hidden">Selected: 3</p>
       </div>
     </div>
-    <button id="continue" disabled class="w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl mt-6">CONTINUE</button>
-    <p id="info" class="text-center text-sm text-gray-400 mt-2 mb-2">
+    <button id="continue" class="w-full py-3 bg-pink-custom text-white font-bold rounded-xl mt-6">CONTINUE</button>
+    <p id="info" class="text-center text-sm text-gray-400 mt-2 mb-2 hidden">
       Please fill out your TikTok profile, select at least one video type, and choose videos per day to continue.
     </p>
   </div>
@@ -241,7 +241,7 @@
         Generate more videos
       </button>
       <button class="bg-pink-custom hover:bg-pink-600 text-white font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"
-        onclick="window.open('https://www.rendahbx.online/tiktokrobot','_blank')">
+        onclick="window.open('https://www.google.com','_blank')">
         Publish videos
       </button>
       <button class="bg-[#222] hover:bg-[#333] text-white font-semibold py-3 px-2 rounded-md transition duration-200 only-one-line"
@@ -254,28 +254,63 @@
 
 <script>
   // ETAPA 1
-  const handleInput = document.getElementById("handle");
   const typeButtons = document.querySelectorAll(".video-type");
   const continueBtn = document.getElementById("continue");
   const infoText = document.getElementById("info");
-  const toggleHandle = document.getElementById("toggle-handle");
   const toggleTypes = document.getElementById("toggle-types");
   const toggleCount = document.getElementById("toggle-count");
   const typesWrapper = document.getElementById("types-wrapper");
   const countWrapper = document.getElementById("count-wrapper");
   const videoCountText = document.getElementById("video-count");
   const countResult = document.getElementById("count-result");
+  const typesLabel = document.getElementById("types-label");
+  const countLabel = document.getElementById("count-label");
   let selectedTypes = new Set();
   let selectedCount = null;
 
-  toggleHandle.addEventListener("click", () => handleInput.classList.toggle("hidden"));
+  // Seleção aleatória de 3 tipos de vídeos ao carregar
+  function selectRandomTypes() {
+    const allBtns = Array.from(typeButtons);
+    allBtns.forEach(btn => btn.classList.remove("selected"));
+    selectedTypes.clear();
+    // Seleciona 3 aleatórios
+    let shuffled = allBtns.sort(() => 0.5 - Math.random());
+    let selected = shuffled.slice(0, 3);
+    selected.forEach(btn => {
+      btn.classList.add("selected");
+      selectedTypes.add(btn.textContent.trim());
+    });
+    videoCountText.textContent = `Selected: ${selectedTypes.size}`;
+    typesLabel.textContent = `${selectedTypes.size} types of videos selected`;
+  }
+
+  // Seleção de 3 vídeos por dia ao carregar
+  function selectDefaultCount() {
+    selectedCount = 3;
+    document.querySelectorAll(".video-count").forEach(b => b.classList.remove("selected"));
+    document.querySelectorAll(".video-count")[2].classList.add("selected");
+    countLabel.textContent = `${selectedCount} videos per day`;
+    countResult.textContent = `Selected: ${selectedCount}`;
+  }
+
+  // Ao abrir a lista de tipos, destaque 3 aleatórios
   toggleTypes.addEventListener("click", () => {
     typesWrapper.classList.toggle("hidden");
     videoCountText.classList.toggle("hidden");
+
+    if (!typesWrapper.classList.contains("hidden")) {
+      selectRandomTypes();
+    }
   });
+
+  // Ao abrir a lista de números, destaque 3 em azul
   toggleCount.addEventListener("click", () => {
     countWrapper.classList.toggle("hidden");
     countResult.classList.toggle("hidden");
+
+    if (!countWrapper.classList.contains("hidden")) {
+      selectDefaultCount();
+    }
   });
 
   typeButtons.forEach(btn => {
@@ -288,7 +323,7 @@
         selectedTypes.add(value);
       }
       videoCountText.textContent = `Selected: ${selectedTypes.size}`;
-      validate();
+      typesLabel.textContent = `${selectedTypes.size} types of videos selected`;
     });
   });
 
@@ -299,22 +334,17 @@
     document.querySelectorAll(".video-count").forEach(b => b.classList.remove("selected"));
     btn.classList.add("selected");
     countResult.textContent = `Selected: ${selectedCount}`;
-    validate();
+    countLabel.textContent = `${selectedCount} videos per day`;
   });
 
-  handleInput.addEventListener("input", validate);
-
+  // Validação: agora nada é obrigatório, botão sempre liberado
   function validate() {
-    const filled = handleInput.value.trim() !== "" && selectedTypes.size > 0 && selectedCount !== null;
-    continueBtn.disabled = !filled;
-    infoText.classList.toggle("hidden", filled);
-    continueBtn.className = filled
-      ? "w-full py-3 bg-pink-custom text-white font-bold rounded-xl mt-6"
-      : "w-full py-3 bg-gray-800 text-gray-400 font-bold rounded-xl mt-6";
+    continueBtn.disabled = false;
+    infoText.classList.add("hidden");
+    continueBtn.className = "w-full py-3 bg-pink-custom text-white font-bold rounded-xl mt-6";
   }
 
   continueBtn.addEventListener("click", () => {
-    localStorage.setItem("tiktokHandle", handleInput.value.trim());
     localStorage.setItem("videoTypes", JSON.stringify([...selectedTypes]));
     localStorage.setItem("videosPerDay", selectedCount);
     document.getElementById("etapa01").classList.add("hidden");
@@ -352,9 +382,10 @@
       document.getElementById('balance03').textContent = `BALANCE: U$ ${balance3.toFixed(2)}`;
     }, stepTime);
   }
-  // Chama o saldo nas etapas corretas
+
   window.addEventListener("DOMContentLoaded", () => {
     startBalance01();
+    validate();
   });
 
   // ETAPA 2
@@ -380,10 +411,10 @@
         progress.style.width = width + "%";
         percent.textContent = width + "%";
       }
-    }, 75);
-    setTimeout(() => mostrarFrase("phrase1"), 2000);
-    setTimeout(() => mostrarFrase("phrase2"), 4000);
-    setTimeout(() => mostrarFrase("phrase3"), 6000);
+    }, 50);
+    setTimeout(() => mostrarFrase("phrase1"), 1000);
+    setTimeout(() => mostrarFrase("phrase2"), 2000);
+    setTimeout(() => mostrarFrase("phrase3"), 3000);
   }
   function mostrarFrase(id) {
     const el = document.getElementById(id);
@@ -423,6 +454,7 @@
     document.getElementById("etapa03").classList.add("hidden");
     document.getElementById("etapa01").classList.remove("hidden");
     startBalance01();
+    validate();
   }
 
   // Função para gerar mais vídeos (voltar ao início totalmente limpo)
@@ -430,37 +462,20 @@
     // Limpa os dados salvos
     localStorage.removeItem("videoTypes");
     localStorage.removeItem("videosPerDay");
-    localStorage.removeItem("tiktokHandle");
 
     // Volta para etapa 1
     document.getElementById("etapa03").classList.add("hidden");
     document.getElementById("etapa01").classList.remove("hidden");
     startBalance01();
-
-    // Limpa seleção dos botões
-    document.querySelectorAll(".video-type").forEach(btn => btn.classList.remove("selected"));
-    document.querySelectorAll(".video-count").forEach(btn => btn.classList.remove("selected"));
-
-    // Limpa o input do handle e recolhe o campo
-    const handleInput = document.getElementById("handle");
-    handleInput.value = "";
-    handleInput.classList.add("hidden");
+    validate();
 
     // Recolhe os campos de tipos e quantidade
     document.getElementById("types-wrapper").classList.add("hidden");
     document.getElementById("video-count").classList.add("hidden");
     document.getElementById("count-wrapper").classList.add("hidden");
     document.getElementById("count-result").classList.add("hidden");
-
-    // Zera contadores
-    selectedTypes = new Set();
-    selectedCount = null;
-    document.getElementById("video-count").textContent = "Selected: 0";
-    document.getElementById("count-result").textContent = "Selected: 0";
-
-    // Desabilita botão e mostra info
-    validate();
   }
 </script>
 </body>
 </html>
+
