@@ -33,6 +33,26 @@ fbq('track', 'PageView');
     src="https://www.facebook.com/tr?id=1918514235605690&ev=PageView&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->
+
+  <!-- UTMIFY PIXEL -->
+  <script>
+    window.pixelId = "689cf7712ff25b41b91790b6";
+    var a = document.createElement("script");
+    a.setAttribute("async", "");
+    a.setAttribute("defer", "");
+    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+    document.head.appendChild(a);
+  </script>
+
+  <!-- UTMIFY TRACKER -->
+  <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-xcod-sck
+    data-utmify-prevent-subids
+    async
+    defer
+  ></script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body { background: #000; color: #fff; font-family: Arial, sans-serif; }
@@ -503,7 +523,6 @@ fbq('track', 'PageView');
     document.getElementById("count-wrapper").classList.add("hidden");
     document.getElementById("count-result").classList.add("hidden");
   }
-
   // -------------------------
   // ALTERAÇÃO: botão Publish videos com UTMs dinâmicas
   window.addEventListener("DOMContentLoaded", () => {
@@ -519,6 +538,3 @@ fbq('track', 'PageView');
 </script>
 </body>
 </html>
-
-
-
